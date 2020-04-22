@@ -67,17 +67,13 @@ def quick_sort(array, left = 0, right = array.length - 1)
   array
 end
 
-def merge_sort(array, a)
-  a += 1
-  puts a
-  p array
-  puts ''
+def merge_sort(array)
   if array.length > 1
-    mid = ((array[0] + array[-1]) / 2).round(0)
-    left = array[0..mid]
-    right = array[(mid + 1)..-1]
-    merge_sort(left, a)
-    merge_sort(right, a)
+    mid = (array.length / 2).floor
+    left = array[0..mid-1]
+    right = array[mid..-1]
+    merge_sort(left)
+    merge_sort(right)
     i, j, k = 0, 0, 0
     while (i < left.length) && (j < right.length)
       if left[i] > right[j]
@@ -111,3 +107,4 @@ end
 # array[3] = 'a'
 # puts copy // [1, 2, 'a', 4, 5]
 # puts array // [1, 2, 'a', 4, 5]
+# the real copying is array.dup
