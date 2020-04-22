@@ -65,11 +65,11 @@ const quickSort = (array, left = 0, right = array.length - 1) => {
   const partition = (array, left, right) => {
     let pivot = array[Math.floor((right + left) / 2)];
     while (left <= right) {
-      while (array[left] < pivot) {
+      while (array[left] > pivot) {
         quickCount += 1;
         left++;
       }
-      while (array[right] > pivot) {
+      while (array[right] < pivot) {
         quickCount += 1;
         right--;
       }
@@ -90,7 +90,7 @@ const quickSort = (array, left = 0, right = array.length - 1) => {
     let index = partition(array, left, right);
     // yes, it says left = 0, but I can't just replace left with 0
     // been there, it gets stuck in an infinity loop
-    if (left > index - 1) {
+    if (left < index - 1) {
       quickSort(array, left, index - 1);
     }
     if (index < right) {
@@ -161,8 +161,8 @@ const displayResults = (array) => {
   const bubbleResult = bubbleSort([...array]);
   const insertResult = insertionSort([...array]);
   const selectResult = selectionSort([...array]);
-  const quickResult = quickSort(array);
-  const mergeResult = mergeSort(array);
+  const quickResult = quickSort([...array]);
+  const mergeResult = mergeSort([...array]);
 
   const resultString = (strategy, result, count) => {
     return `${strategy} sort => [${result}] with ${count} comparisons`;
