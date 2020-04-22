@@ -104,7 +104,7 @@ const mergeSort = (array) => {
   if (array.length > 1) {
     let mid = Math.floor(array.length / 2);
     let left = array.slice(0, mid);
-    let right = array.slice(mid + 1);
+    let right = array.slice(mid);
     mergeSort(left);
     mergeSort(right);
     let i = 0;
