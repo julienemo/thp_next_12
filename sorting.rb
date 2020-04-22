@@ -37,7 +37,7 @@ def insertion_sort(array)
   (0..s).each do |i|
     x = array[i]
     j = i
-    while j.positive? && array[i - 1] < x
+    while j.positive? && array[j - 1] < x
       insert_count = 0
       array[j] = array[j - 1]
       j -= 1
