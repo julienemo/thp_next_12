@@ -11,10 +11,10 @@ let quickCount = 0;
 // Sorting strategies
 const bubbleSort = (array) => {
   let copy = [...array];
-  let s = copy.length;
+  let s = copy.length - 1;
   for (let i = 0; i < s; i++) {
     let shouldContinue = false;
-    for (let m = i; m < s; m++) {
+    for (let m = 0; m < s; m++) {
       bubbleCount += 1;
       if (copy[m] < copy[m + 1]) {
         shouldContinue = true;
@@ -30,7 +30,7 @@ const bubbleSort = (array) => {
 const insertionSort = (array) => {
   let copy = [...array];
   let s = copy.length;
-  for (let i = 0; i <= s - 1; i++) {
+  for (let i = s - 1; i > 0; i--) {
     let x = copy[i];
     let j = i;
     while (j > 0 && copy[j - 1] < x) {
@@ -148,7 +148,7 @@ const displayResults = (array) => {
 // execution
 fs.readFile(fileName, "utf8", (error, data) => {
   openFileWithCatch(error);
-  const array = parseArrayCatch(data);
+  array = parseArrayCatch(data);
   printFinalArray(array);
   displayResults(array);
 });
