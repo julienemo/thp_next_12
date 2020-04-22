@@ -17,16 +17,13 @@ def bubble_sort(array)
 end
 
 def selection_sort(array)
-  select_count = 0
-  copy = array[0..-1]
-  s = copy.length - 1
+  s = array.length - 1
   (0..s).each do |i|
     max = i
     (i + 1..s).each do |j|
-      select_count += 1
       max = j if array[j] > array[max]
     end
-    array[max], array[j] = array[j], array[max] if max != i
+    array[max], array[i] = array[i], array[max] if max != i
   end
   array
 end
@@ -110,7 +107,7 @@ end
 # or every object is passed by reference
 # ex:
 # array = [1, 2, 3, 4, 5]
-# copy = array
-# copy[3] = 'a'
+# array = array
+# array[3] = 'a'
 # puts copy // [1, 2, 'a', 4, 5]
 # puts array // [1, 2, 'a', 4, 5]
